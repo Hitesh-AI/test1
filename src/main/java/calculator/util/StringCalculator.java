@@ -1,6 +1,7 @@
 package calculator.util;
 
 import java.util.Arrays;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -39,10 +40,20 @@ public class StringCalculator {
     private static StringCalculator parseNumbersInput(String input) {
         if (input.startsWith("//")) {
             String[] splitWithDemil = input.split("\n", 2);
-            return new StringCalculator(splitWithDemil[0].substring(2), splitWithDemil[1]);
+            return new StringCalculator(parseDelimiter(splitWithDemil[0]), splitWithDemil[1]);
         } else {
             return new StringCalculator(",|\n", input);
         }
+    }
+
+    private static String parseDelimiter(String delim) {
+        String delimiter  = delim.substring(2);
+
+        if(delimiter.startsWith("[")) {
+            delimiter = delimiter.substring(1, delimiter.length() -1);
+        }
+
+        return Pattern.quote(delimiter);
     }
 
     private void checkNegatives() {

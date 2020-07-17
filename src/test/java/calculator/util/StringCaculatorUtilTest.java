@@ -56,4 +56,9 @@ public class StringCaculatorUtilTest {
         assertThat(StringCalculator.sum("7,1007"), is(7));
     }
 
+    @Test
+    public void shouldAcceptDelimitersOfArbitaroryLength() {
+        assertThat(StringCalculator.sum("//[***]\n1***3***3"), is(7));
+    }
+
 }
