@@ -16,4 +16,9 @@ public class StringCaculatorUtilTest {
     public void shouldReturnNumberOnNumber() {
         assertThat(StringCalculator.sum("7"), is(7));
     }
+
+    @Test
+    public void shouldReturnSumOfTwoNumbersDelimitedByCommas() {
+        assertThat(StringCalculator.sum("3,4"), is(7));
+    }
 }
