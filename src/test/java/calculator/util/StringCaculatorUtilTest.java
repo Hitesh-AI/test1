@@ -3,7 +3,9 @@ package calculator.util;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class StringCaculatorUtilTest {
 
@@ -35,5 +37,17 @@ public class StringCaculatorUtilTest {
     @Test
     public void shouldAcceptCustomeDelimiterSyntax() {
         assertThat(StringCalculator.sum("//;\n4;3"), is(7));
+    }
+
+    @Rule
+    public ExpectedException expectedException = ExpectedException.none();
+
+    @Test
+    public void shouldRaiseExceptionOnNegativeNumber() {
+
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage("Negative numbers: -2,-3,-5");
+
+        StringCalculator.sum("1,-2,-3,4,-5,7");
     }
 }
