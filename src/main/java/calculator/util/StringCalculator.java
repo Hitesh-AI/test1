@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class StringCalculator {
 
@@ -20,9 +21,7 @@ public class StringCalculator {
     }
 
     private int getSum() {
-
         checkNegatives();
-
         return getInputNumbers().sum();
     }
 
@@ -53,7 +52,9 @@ public class StringCalculator {
             delimiter = delimiter.substring(1, delimiter.length() -1);
         }
 
-        return Pattern.quote(delimiter);
+        return Stream.of(delimiter.split("]\\["))
+                .map(Pattern::quote)
+                .collect(Collectors.joining("|"));
     }
 
     private void checkNegatives() {
