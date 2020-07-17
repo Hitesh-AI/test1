@@ -11,4 +11,9 @@ public class StringCaculatorUtilTest {
     public void shouldReturnZeroOnEmptyString() {
         assertThat(StringCalculator.sum(""), is(0));
     }
+
+    @Test
+    public void shouldReturnNumberOnNumber() {
+        assertThat(StringCalculator.sum("7"), is(7));
+    }
 }
