@@ -8,7 +8,7 @@ public class StringCalculator {
         if(number.isEmpty())
             return 0;
 
-        return Arrays.stream(number.split(","))
+        return Arrays.stream(number.split(",|\n"))
                     .filter((n) -> !n.isEmpty())
                     .map(String::trim)
                     .mapToInt(Integer::parseInt)

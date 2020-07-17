@@ -26,4 +26,9 @@ public class StringCaculatorUtilTest {
     public void shouldReturnsSumOnMultipleNUmbers() {
         assertThat(StringCalculator.sum("1,2,4"), is(7));
     }
+
+    @Test
+    public void shouldAcceptNewLineAsValidDelimeter() {
+        assertThat(StringCalculator.sum("1,2\n4"), is(7));
+    }
 }
