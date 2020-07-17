@@ -50,4 +50,10 @@ public class StringCaculatorUtilTest {
 
         StringCalculator.sum("1,-2,-3,4,-5,7");
     }
+
+    @Test
+    public void shouldBeIgnoredWhenNoIsGreaterThanThousand() {
+        assertThat(StringCalculator.sum("7,1007"), is(7));
+    }
+
 }

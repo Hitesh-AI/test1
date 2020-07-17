@@ -32,7 +32,8 @@ public class StringCalculator {
         return Arrays.stream(numbers.split(delimiter))
                     .filter((n) -> !n.isEmpty())
                     .map(String::trim)
-                    .mapToInt(Integer::parseInt);
+                    .mapToInt(Integer::parseInt)
+                    .filter(n -> n < 1000);
     }
 
     private static StringCalculator parseNumbersInput(String input) {
