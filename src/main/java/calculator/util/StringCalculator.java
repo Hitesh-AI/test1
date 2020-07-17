@@ -8,7 +8,15 @@ public class StringCalculator {
         if(number.isEmpty())
             return 0;
 
-        return Arrays.stream(number.split(",|\n"))
+        String delimiter = ",|\n";
+
+        if(number.startsWith("//")) {
+            String[] splitWithDemil = number.split("\n", 2);
+            delimiter = splitWithDemil[0].substring(2);
+            number = splitWithDemil[1];
+        }
+
+        return Arrays.stream(number.split(delimiter))
                     .filter((n) -> !n.isEmpty())
                     .map(String::trim)
                     .mapToInt(Integer::parseInt)

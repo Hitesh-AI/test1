@@ -31,4 +31,9 @@ public class StringCaculatorUtilTest {
     public void shouldAcceptNewLineAsValidDelimeter() {
         assertThat(StringCalculator.sum("1,2\n4"), is(7));
     }
+
+    @Test
+    public void shouldAcceptCustomeDelimiterSyntax() {
+        assertThat(StringCalculator.sum("//;\n4;3"), is(7));
+    }
 }
